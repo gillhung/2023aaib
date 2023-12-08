@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>我的寶可夢球</title>
+  <style>
+    /* 在这里设置球的样式 */
+    #pokeball {
+      width: 100px;
+      height: 100px;
+      background: red;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="pokeball"></div>
+
+<script>
+  const pokeball = document.getElementById('pokeball');
+
+  // 添加点击事件
+  pokeball.addEventListener('click', async () => {
+    try {
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon/1');
+      const data = await response.json();
+      
+      // 获取到 Pokemon 的信息，你可以根据需求展示在页面上
+      console.log(data);
+      alert(`寶可夢名稱：${data.name}，高度：${data.height}，重量：${data.weight}`);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });
+</script>
+
+</body>
+</html>
